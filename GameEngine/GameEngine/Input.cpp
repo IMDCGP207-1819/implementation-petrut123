@@ -25,7 +25,7 @@ bool Input::GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow &window)
 			keyReleased = false;
 			return true;
 		}
-		else if (event.type == sf::Event::KeyReleased && event.key.code == button)
+		else
 		{
 			keyReleased = true;
 			return false;
@@ -45,9 +45,45 @@ bool Input::GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &windo
 			mouseReleased = false;
 			return true;
 		}
-		else if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == button)
+		else
 		{
 			mouseReleased = true;
+			return false;
+		}
+	}
+	return false;
+}
+
+bool Input::GetButtonUp(sf::Mouse::Button button, sf::RenderWindow & window)
+{
+	sf::Event event;
+
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::KeyReleased && event.key.code == button)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return false;
+}
+
+bool Input::GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow & window)
+{
+	sf::Event event;
+
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == button)
+		{
+			return true;
+		}
+		else
+		{
 			return false;
 		}
 	}
