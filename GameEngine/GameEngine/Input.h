@@ -29,8 +29,20 @@ public:
 	/// <returns></returns>
 	static bool GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &window);
 
+	/// <summary>
+	/// Checks if the mouse button was released this frame or not.
+	/// </summary>
+	/// <param name="button">Pressed mouse button</param>
+	/// <param name="window"></param>
+	/// <returns>True the frame the button was released, false otherwise</returns>
 	static bool GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow &window);
 
-	static bool GetButtonUp(sf::Mouse::Button button, sf::RenderWindow &window);
+	/// <summary>
+	/// Checks if the button was released this frame or not.
+	/// </summary>
+	/// <param name="button">Pressed button</param>
+	/// <param name="window"></param>
+	/// <returns>True the frame the button was released, false otherwise</returns>
+	static bool GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow &window);
 };
 

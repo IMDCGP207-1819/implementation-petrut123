@@ -54,7 +54,7 @@ bool Input::GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &windo
 	return false;
 }
 
-bool Input::GetButtonUp(sf::Mouse::Button button, sf::RenderWindow & window)
+bool Input::GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow & window)
 {
 	sf::Event event;
 
