@@ -36,13 +36,34 @@ void Snake::Update(sf::RenderWindow* window)
 
 	this->Move();
 
-	window->draw(*sprite);
+	if (this->sprite->getPosition() == food.sprite->getPosition())
+	{
+		Eat();
+	}
+
+	Draw(window);
 }
 
 void Snake::SetDirection(int x, int y)
 {
 	this->xDirection = x;
 	this->yDirection = y;
+}
+
+void Snake::Eat()
+{
+	std::cout << "Food eated!" << std::endl;
+	//this->body.push_back(new sf::Sprite(this->texture));
+	food.SetLocation();
+}
+
+void Snake::Draw(sf::RenderWindow* window)
+{
+	window->draw(*sprite);
+	window->draw(*this->food.sprite);
+	//if (this->body.size() > 0)
+		//for (size_t i = 0; i < this->body.size(); i++)
+			//window->draw(this->body[i].sprite);
 }
 
 void Snake::Move()

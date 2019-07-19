@@ -1,2 +1,8 @@
 ﻿  GameEngine.cpp
+  Snake.cpp
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(8,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(8,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Snake.cpp(71,69): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Snake.cpp(71,38): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
   GameEngine.vcxproj -> E:\Game-Engine\implementation-petrut123\GameEngine\Debug\GameEngine.exe
