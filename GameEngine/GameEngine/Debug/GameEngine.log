@@ -1,6 +1,2 @@
-﻿  pch.cpp
-  GameEngine.cpp
-  Input.cpp
-  Generating Code...
-  LINK : C:\system32\GameEngine\implementation-petrut123\GameEngine\Debug\GameEngine.exe not found or not built by the last incremental link; performing full link
-  GameEngine.vcxproj -> C:\system32\GameEngine\implementation-petrut123\GameEngine\Debug\GameEngine.exe
+﻿  GameEngine.cpp
+  GameEngine.vcxproj -> E:\Game-Engine\implementation-petrut123\GameEngine\Debug\GameEngine.exe

@@ -14,31 +14,30 @@ bool Input::GetMouseButtonState(sf::Mouse::Button button)
 	return sf::Mouse::isButtonPressed(button);
 }
 
-bool Input::GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow &window)
+bool Input::GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow* window)
 {
 	sf::Event event;
-	static bool keyReleased = true;
-	while (window.pollEvent(event))
+	while (window->pollEvent(event))
 	{
-		if (event.type == sf::Event::KeyPressed && event.key.code == button && keyReleased == true)
+		if (event.type == sf::Event::KeyPressed && event.key.code == button)
 		{
-			keyReleased = false;
+			//Input::keyReleased = false;
 			return true;
 		}
 		else
 		{
-			keyReleased = true;
+			//Input::keyReleased = true;
 			return false;
 		}
 	}
 	return false;
 }
 
-bool Input::GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &window)
+bool Input::GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow* window)
 {
 	sf::Event event;
 	static bool mouseReleased = true;
-	while (window.pollEvent(event))
+	while (window->pollEvent(event))
 	{
 		if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == button && mouseReleased == true)
 		{
@@ -54,11 +53,11 @@ bool Input::GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &windo
 	return false;
 }
 
-bool Input::GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow & window)
+bool Input::GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow* window)
 {
 	sf::Event event;
 
-	while (window.pollEvent(event))
+	while (window->pollEvent(event))
 	{
 		if (event.type == sf::Event::KeyReleased && event.key.code == button)
 		{
@@ -72,11 +71,11 @@ bool Input::GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow & window)
 	return false;
 }
 
-bool Input::GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow & window)
+bool Input::GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow* window)
 {
 	sf::Event event;
 
-	while (window.pollEvent(event))
+	while (window->pollEvent(event))
 	{
 		if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == button)
 		{

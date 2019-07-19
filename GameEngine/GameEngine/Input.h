@@ -2,6 +2,7 @@
 class Input
 {
 public:
+	static bool keyReleased;
 	/// <summary>
 	/// Checks a button's state.
 	/// </summary>
@@ -20,14 +21,14 @@ public:
 	/// <param name="button">Pressed button</param>
 	/// <param name="window"></param>
 	/// <returns>True the frame the button was pressed, false otherwise</returns>
-	static bool GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow &window);
+	static bool GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow* window);
 	/// <summary>
 	/// Checks if a mouse button was pressed in the frame it was called. TODO: get pointer to window without parsing the parameter
 	/// </summary>
 	/// <param name="button">Pressed mouse button</param>
 	/// <param name="window"></param>
 	/// <returns></returns>
-	static bool GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow &window);
+	static bool GetMouseButtonDown(sf::Mouse::Button button, sf::RenderWindow* window);
 
 	/// <summary>
 	/// Checks if the mouse button was released this frame or not.
@@ -35,7 +36,7 @@ public:
 	/// <param name="button">Pressed mouse button</param>
 	/// <param name="window"></param>
 	/// <returns>True the frame the button was released, false otherwise</returns>
-	static bool GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow &window);
+	static bool GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow* window);
 
 	/// <summary>
 	/// Checks if the button was released this frame or not.
@@ -43,6 +44,6 @@ public:
 	/// <param name="button">Pressed button</param>
 	/// <param name="window"></param>
 	/// <returns>True the frame the button was released, false otherwise</returns>
-	static bool GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow &window);
+	static bool GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow* window);
 };
 
