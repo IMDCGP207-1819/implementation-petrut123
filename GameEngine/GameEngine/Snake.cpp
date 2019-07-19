@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Snake.h"
-#include <iostream>
 
 Snake::Snake()
 {
@@ -52,8 +51,9 @@ void Snake::SetDirection(int x, int y)
 
 void Snake::Eat()
 {
-	std::cout << "Food eated!" << std::endl;
-	//this->body.push_back(new sf::Sprite(this->texture));
+	sf::Sprite* sprite = new sf::Sprite(this->texture);
+	sprite->setPosition(this->sprite->getPosition());
+	this->tail.push_back(sprite);
 	food.SetLocation();
 }
 
@@ -61,12 +61,18 @@ void Snake::Draw(sf::RenderWindow* window)
 {
 	window->draw(*sprite);
 	window->draw(*this->food.sprite);
-	//if (this->body.size() > 0)
-		//for (size_t i = 0; i < this->body.size(); i++)
-			//window->draw(this->body[i].sprite);
+		for (auto const& i : this->tail)
+			window->draw(*i);
 }
 
 void Snake::Move()
 {
-	this->sprite->move(this->xDirection * snakeSpeed, this->yDirection * snakeSpeed);
+	for (std::list<sf::Sprite*>::reverse_iterator i = this->tail.rbegin(); i != this->tail.rend(); ++i)
+	{
+		if ((*i) == this->tail.front())
+			(*i)->setPosition(this->sprite->getPosition());
+		else
+			(*i)->setPosition((*std::next(i, 1))->getPosition());
+	}
+	this->sprite->move(this->xDirection* this->snakeSpeed, this->yDirection* this->snakeSpeed);
 }

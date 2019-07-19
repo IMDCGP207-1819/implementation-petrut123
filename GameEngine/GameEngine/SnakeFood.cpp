@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "SnakeFood.h"
-#include <iostream>
+
 SnakeFood::SnakeFood()
 {
 	this->texture.loadFromFile("../Assets/Food.png");
