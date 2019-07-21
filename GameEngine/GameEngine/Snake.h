@@ -21,5 +21,7 @@ private:
 	void SetDirection(int x, int y);
 	void Eat();
 	void Draw(sf::RenderWindow* window);
+	bool CheckDeath();
+	void ResetSnake();
 };
 

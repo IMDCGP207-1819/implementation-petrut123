@@ -33,12 +33,18 @@ void Snake::Update(sf::RenderWindow* window)
 		this->SetDirection(0, -1);
 	}
 
-	this->Move();
-
+	// If the head collides with the food the snake eats the food
 	if (this->sprite->getPosition() == food.sprite->getPosition())
 	{
 		Eat();
 	}
+
+	this->Move();
+
+	// If the snake died reset the game
+	// TODO: Create a class to control starting / restarting the game
+	if (CheckDeath())
+		ResetSnake();
 
 	Draw(window);
 }
@@ -63,6 +69,23 @@ void Snake::Draw(sf::RenderWindow* window)
 	window->draw(*this->food.sprite);
 		for (auto const& i : this->tail)
 			window->draw(*i);
+}
+
+bool Snake::CheckDeath()
+{
+	for (std::list<sf::Sprite*>::reverse_iterator i = this->tail.rbegin(); i != this->tail.rend(); ++i)
+	{
+		// If the head collides with the tail
+		if ((*i)->getPosition() == this->sprite->getPosition())
+			return true;
+	}
+	return false;
+}
+
+void Snake::ResetSnake()
+{
+	this->tail.clear();
+	this->Start();
 }
 
 void Snake::Move()
