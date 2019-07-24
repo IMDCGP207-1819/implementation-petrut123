@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Snake.h"
-
+#include <iostream>
 Snake::Snake()
 {
 	this->texture.loadFromFile("../Assets/SnakeHead.png");
@@ -16,19 +16,24 @@ void Snake::Start()
 
 void Snake::Update(sf::RenderWindow* window)
 {
-	if (Input::GetButtonState(sf::Keyboard::A))
+	if (Input::GetButtonDown(sf::Keyboard::C, window))
+	{
+		std::cout << "1" << std::endl;
+	}
+
+	if (Input::GetButtonState(sf::Keyboard::A) && this->xDirection != 1)
 	{
 		this->SetDirection(-1, 0);
 	}
-	if (Input::GetButtonState(sf::Keyboard::D))
+	if (Input::GetButtonState(sf::Keyboard::D) && this->xDirection != -1)
 	{
 		this->SetDirection(1, 0);
 	}
-	if (Input::GetButtonState(sf::Keyboard::S))
+	if (Input::GetButtonState(sf::Keyboard::S) && this->yDirection != -1)
 	{
 		this->SetDirection(0, 1);
 	}
-	if (Input::GetButtonState(sf::Keyboard::W))
+	if (Input::GetButtonState(sf::Keyboard::W) && this->yDirection != 1)
 	{
 		this->SetDirection(0, -1);
 	}
@@ -36,17 +41,18 @@ void Snake::Update(sf::RenderWindow* window)
 	// If the head collides with the food the snake eats the food
 	if (this->sprite->getPosition() == food.sprite->getPosition())
 	{
-		Eat();
+		this->Eat();
 	}
 
 	this->Move();
 
-	// If the snake died reset the game
-	// TODO: Create a class to control starting / restarting the game
-	if (CheckDeath())
-		ResetSnake();
+	this->HandleSnakeOutsideMap();
 
-	Draw(window);
+	// If the snake died reset the game
+	if (this->CheckDeath())
+		this->ResetSnake();
+
+	this->Draw(window);
 }
 
 void Snake::SetDirection(int x, int y)
@@ -86,6 +92,26 @@ void Snake::ResetSnake()
 {
 	this->tail.clear();
 	this->Start();
+}
+
+void Snake::HandleSnakeOutsideMap()
+{
+	if (this->sprite->getPosition().x < 0)
+	{
+		this->sprite->setPosition(800, this->sprite->getPosition().y);
+	}
+	else if (this->sprite->getPosition().x > 800)
+	{
+		this->sprite->setPosition(0, this->sprite->getPosition().y);
+	}
+	else if (this->sprite->getPosition().y < 0)
+	{
+		this->sprite->setPosition(this->sprite->getPosition().x, 800);
+	}
+	else if (this->sprite->getPosition().y > 800)
+	{
+		this->sprite->setPosition(this->sprite->getPosition().x, 0);
+	}
 }
 
 void Snake::Move()

@@ -23,5 +23,6 @@ private:
 	void Draw(sf::RenderWindow* window);
 	bool CheckDeath();
 	void ResetSnake();
+	void HandleSnakeOutsideMap();
 };
 
