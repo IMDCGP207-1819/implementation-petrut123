@@ -1,2 +1,0 @@
-Fix the functionality of the input management system.
-Generate documentation.

@@ -2,14 +2,13 @@
 #include "Input.h"
 
 // True indicates the key has been released, false the key is still pressed
-std::map<sf::Keyboard::Key, bool> Input::keysByPressed;
+std::map<sf::Keyboard::Key, bool> Input::keysByState;
 
-Input::Input(sf::RenderWindow* window)
+Input::Input()
 {
-	this->windowReference = window;
 	for (size_t i = 0; i < sf::Keyboard::KeyCount; i++)
 	{
-		Input::keysByPressed.insert(std::pair<sf::Keyboard::Key, bool>((sf::Keyboard::Key)i, true));
+		Input::keysByState.insert(std::pair<sf::Keyboard::Key, bool>((sf::Keyboard::Key)i, true));
 	}
 }
 
@@ -23,20 +22,12 @@ bool Input::GetMouseButtonState(sf::Mouse::Button button)
 	return sf::Mouse::isButtonPressed(button);
 }
 
-bool Input::GetButtonDown(sf::Keyboard::Key button, sf::RenderWindow* window)
+bool Input::GetButtonDown(sf::Keyboard::Key button)
 {
-	sf::Event event;
-	while (window->pollEvent(event))
+	if (Input::keysByState.find(button)->second == false)
 	{
-		if (event.type == sf::Event::KeyPressed)
-		{
-			if (Input::keysByPressed.find(button)->second && event.key.code == button)
-				return true;
-		}
-		else
-		{
-			return false;
-		}
+		UpdateKeyMap(button, true);
+		return true;
 	}
 	return false;
 }
@@ -60,24 +51,9 @@ bool Input::GetButtonUp(sf::Keyboard::Key button, sf::RenderWindow* window)
 	return false;
 }
 
-void Input::HandleKeys()
+void Input::UpdateKeyMap(sf::Keyboard::Key button, bool state)
 {
-	while (this->windowReference->isOpen())
-	{
-		sf::Event event;
-
-		if (this->windowReference->waitEvent(event))
-		{
-			if (event.type == sf::Event::KeyPressed)
-			{
-				Input::keysByPressed.find(event.key.code)->second = false;
-			}
-			else if (event.type == sf::Event::KeyReleased)
-			{
-				Input::keysByPressed.find(event.key.code)->second = true;
-			}
-		}
-	}
+	Input::keysByState.find(button)->second = state;
 }
 
 bool Input::GetMouseButtonUp(sf::Mouse::Button button, sf::RenderWindow* window)

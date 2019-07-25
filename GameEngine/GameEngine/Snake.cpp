@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Snake.h"
-#include <iostream>
+
 Snake::Snake()
 {
+	// Load snake's head texture
 	this->texture.loadFromFile("../Assets/SnakeHead.png");
+	// Create a sprite
 	this->sprite = new sf::Sprite(this->texture);
 	this->Start();
 }
@@ -16,24 +18,19 @@ void Snake::Start()
 
 void Snake::Update(sf::RenderWindow* window)
 {
-	if (Input::GetButtonDown(sf::Keyboard::C, window))
-	{
-		std::cout << "1" << std::endl;
-	}
-
-	if (Input::GetButtonState(sf::Keyboard::A) && this->xDirection != 1)
+	if (Input::GetButtonDown(sf::Keyboard::A) && this->xDirection != 1)
 	{
 		this->SetDirection(-1, 0);
 	}
-	if (Input::GetButtonState(sf::Keyboard::D) && this->xDirection != -1)
+	if (Input::GetButtonDown(sf::Keyboard::D) && this->xDirection != -1)
 	{
 		this->SetDirection(1, 0);
 	}
-	if (Input::GetButtonState(sf::Keyboard::S) && this->yDirection != -1)
+	if (Input::GetButtonDown(sf::Keyboard::S) && this->yDirection != -1)
 	{
 		this->SetDirection(0, 1);
 	}
-	if (Input::GetButtonState(sf::Keyboard::W) && this->yDirection != 1)
+	if (Input::GetButtonDown(sf::Keyboard::W) && this->yDirection != 1)
 	{
 		this->SetDirection(0, -1);
 	}

@@ -1,2 +1,15 @@
-﻿  Input.cpp
+﻿  GameEngine.cpp
+  Input.cpp
+  Random.cpp
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(17,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+  Snake.cpp
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(17,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(17,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Snake.cpp(123,73): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  SnakeFood.cpp
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Snake.cpp(123,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\Random.h(17,2): warning C4091:  'static ': ignored on left of 'Random' when no variable is declared
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\SnakeFood.cpp(13,104): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+E:\Game-Engine\implementation-petrut123\GameEngine\GameEngine\SnakeFood.cpp(13,63): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
   GameEngine.vcxproj -> E:\Game-Engine\implementation-petrut123\GameEngine\Debug\GameEngine.exe
